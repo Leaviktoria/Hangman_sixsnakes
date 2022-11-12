@@ -29,7 +29,6 @@ for(let figure of constants.HANGMAN_PICS)
  {  console.log(figure);
  };
 
-
  
 let positiveAttrs = [];
 let negativeAttrs = [];
