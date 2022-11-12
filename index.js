@@ -24,12 +24,85 @@ if (chooseLevel = `3`) {
     WORDS_TO_GUESS = WORDS_TO_GUESS_3;
 };
 
-
+//Figure 
 for(let figure of constants.HANGMAN_PICS)
  {  console.log(figure);
  };
 
+<<<<<<< HEAD
+
+ 
+let positiveAttrs = [];
+let negativeAttrs = [];
+
+while (true) {          // main loop
+    let matches = [];
+    for (let obj of WORDS_TO_GUESS) {
+        let add = true;
+
+        // only match objects that have the positive attribute
+        for (let posAttr of positiveAttrs) {
+            if (!obj.attrs.includes(posAttr)) {
+                add = false;
+                break;
+            }
+        }
+
+        // only match objects that don't have the negative attribute
+        for (let negAttr of negativeAttrs) {
+            if (obj.attrs.includes(negAttr)) {
+                add = false;
+                break;
+            }
+        }
+
+        if (add) {
+            matches.push(obj);
+        }
+    }
+    //console.log(matches); 
+
+    // handle matches
+    if (matches.length === 0) {
+        console.log("I'm sorry, I've no idea what you're thinking about!")
+        break;
+    } else if (matches.length === 1) {
+        console.log(`I think you're thinking of a ${matches[0].name}`);
+        break;
+    }
+
+    // ask another question
+    // first: compile a list of available attributes
+    let availableAttrs = [];
+    for (let match of matches) {
+        for (let attr of match.attrs) {
+            if (!positiveAttrs.includes(attr) &&
+                !negativeAttrs.includes(attr) &&
+                !availableAttrs.includes(attr)) {
+                    availableAttrs.push(attr);
+                }
+        }
+    }
+    //console.log(`availableAttrs: ${availableAttrs}`);
+
+    if (availableAttrs.length === 0) {
+        console.error("This should never happen: no available attribute.")
+    }
+
+    // ask question
+    let attr = availableAttrs[0];   // TODO choose randomly
+    let answer = prompt(`Is what you're thinking of ${attr} [y/n/q-uit]: `)
+    if (answer === 'y') {
+        positiveAttrs.push(attr);
+    } else if (answer === 'n') {
+        negativeAttrs.push(attr);
+    } else  if (answer === 'q') {
+        process.exit(0);
+    }
+}
+=======
  if (answer == `q`) {
     console.log("Goodbye");
      ProcessingInstruction.exit(0)
  } 
+>>>>>>> 6035b968b6f9e8879ad618a7e841fefd6ed73752
