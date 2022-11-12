@@ -8,19 +8,19 @@ Das Ziel ist es, das gegebene Wort zu erraten. Bei den Wörtern handelt es sich 
 
 let chooseLevel = prompt(`Welches Level von 1-3 willst du spielen?`);
 
-if chooseLevel = `1` {
+if (chooseLevel = `1`) {
 
 
 };
 
 
-if chooseLevel = `2` {
+if (chooseLevel = `2`) {
 
 
 
 };
 
-if chooseLevel = `3` {
+if (chooseLevel = `3`) {
 
 
 
