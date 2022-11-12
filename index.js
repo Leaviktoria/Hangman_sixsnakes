@@ -28,3 +28,7 @@ if (chooseLevel = `3`) {
 for(let figure of constants.HANGMAN_PICS)
  {  console.log(figure);
  };
+
+ if (answer == `q`) {
+     ProcessingInstruction.exit(0)
+ } 
