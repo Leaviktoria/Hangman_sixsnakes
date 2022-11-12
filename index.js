@@ -1,4 +1,4 @@
-const { WORDS_TO_GUESS_1 } = require('./constants');
+const { WORDS_TO_GUESS_1, HANGMAN_PICS } = require('./constants');
 const { WORDS_TO_GUESS_2 } = require('./constants');
 const { WORDS_TO_GUESS_3 } = require('./constants');
 const constants = require('./constants');
@@ -16,25 +16,15 @@ let chooseLevel = prompt(`Welches Level von 1-3 willst du spielen?`);
 
 if (chooseLevel = `1`) {
 WORDS_TO_GUESS = WORDS_TO_GUESS_1;
-};WORDS_TO_GUESS
+};
 
 if (chooseLevel = `2`) {
     WORDS_TO_GUESS = WORDS_TO_GUESS_2;
-};
-
-if (chooseLevel = `3`) {
-    WORDS_TO_GUESS = WORDS_TO_GUESS_3;
-randomWord = WORDS_TO_GUESS_1[Math.floor(Math.random()*WORDS_TO_GUESS_1.length)];
-
-};
-
-if (chooseLevel = `2`) {
-    randomWord = WORDS_TO_GUESS_2[Math.floor(Math.random()*WORDS_TO_GUESS_2.length)];
     console.log(HANGMAN_PICS[1]);
 };
 
 if (chooseLevel = `3`) {
-    randomWord = WORDS_TO_GUESS_3[Math.floor(Math.random()*WORDS_TO_GUESS_3.length)];
+    WORDS_TO_GUESS = WORDS_TO_GUESS_3;
     console.log(HANGMAN_PICS[3]);
 };
 
