@@ -30,5 +30,6 @@ for(let figure of constants.HANGMAN_PICS)
  };
 
  if (answer == `q`) {
+    console.log("Goodbye");
      ProcessingInstruction.exit(0)
  } 
