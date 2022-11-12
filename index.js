@@ -1,4 +1,6 @@
-const { WORDS_TO_GUESS } = require('./constants');
+const { WORDS_TO_GUESS_1 } = require('./constants');
+const { WORDS_TO_GUESS_2 } = require('./constants');
+const { WORDS_TO_GUESS_3 } = require('./constants');
 const constants = require('./constants');
 let alphaBet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
