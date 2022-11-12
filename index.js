@@ -26,7 +26,7 @@ if (chooseLevel = `2`) {
 
 if (chooseLevel = `3`) {
     WORDS_TO_GUESS = WORDS_TO_GUESS_3;
-    console.log(HANGMAN_PICS[5]);
+    console.log(HANGMAN_PICS[3]);
 };
 
 //Figure 
