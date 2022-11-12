@@ -16,7 +16,7 @@ let chooseLevel = prompt(`Welches Level von 1-3 willst du spielen?`);
 
 if (chooseLevel = `1`) {
 WORDS_TO_GUESS = WORDS_TO_GUESS_1;
-};
+};WORDS_TO_GUESS
 
 if (chooseLevel = `2`) {
     WORDS_TO_GUESS = WORDS_TO_GUESS_2;
