@@ -58,5 +58,5 @@ const WORDS_TO_GUESS_3 = [`Warzenschlange`, `Blindschlange`, `Kupferkopf`, `Sees
 
 module.exports = {
   HANGMAN_PICS: HANGMAN_PICS,
-  WORDS_TO_GUESS: WORDS_TO_GUESS,WORDS_TO_GUESS_2, WORDS_TO_GUESS_3,
+  WORDS_TO_GUESS: WORDS_TO_GUESS_1,WORDS_TO_GUESS_2, WORDS_TO_GUESS_3,
 };
