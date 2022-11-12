@@ -29,7 +29,6 @@ for(let figure of constants.HANGMAN_PICS)
  {  console.log(figure);
  };
 
-<<<<<<< HEAD
 
  
 let positiveAttrs = [];
@@ -100,8 +99,6 @@ while (true) {          // main loop
         process.exit(0);
     }
 }
-=======
  if (answer == `q`) {
      ProcessingInstruction.exit(0)
  } 
->>>>>>> 6035b968b6f9e8879ad618a7e841fefd6ed73752
