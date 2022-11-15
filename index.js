@@ -7,28 +7,25 @@ const constants = require('./constants');
 const prompt = require("prompt-sync")();
 
 
-console.log(`Welcome to Hangman.
-Das Ziel ist es, das gegebene Wort zu erraten. Bei den Wörtern handelt es sich um Arten von Schlangen.`)
+console.log("Welcome to Hangman. Das Ziel ist es, das gegebene Wort zu erraten. Bei den Wörtern handelt es sich um Arten von Schlangen.")
 
 let word = ""
 
 //Level
-let chooseLevel = prompt(`Welches Level von 1-3 willst du spielen?`);
 
-if (chooseLevel = `1`) {
+let chooseLevel = prompt("Welches Level von 1-3 willst du spielen?");
+
+
+if (chooseLevel === "1") {
     word = WORDS_TO_GUESS_1[Math.floor(Math.random() * WORDS_TO_GUESS_1.length)];
-};
-
-if (chooseLevel = `2`) {
+} else if (chooseLevel === "2") {
     word = WORDS_TO_GUESS_2[Math.floor(Math.random() * WORDS_TO_GUESS_2.length)];
     console.log(HANGMAN_PICS[1]);
-};
-
-if (chooseLevel = `3`) {
+} else if (chooseLevel === "3") {
     word = WORDS_TO_GUESS_3[Math.floor(Math.random() * WORDS_TO_GUESS_3.length)]
     console.log(HANGMAN_PICS[3]);
-}; 
-
+} else if (chooseLevel === "q" && chooseLevel === "Q")
+    process.exit()
 //Figure 
 for(let figure of constants.HANGMAN_PICS)
  {  console.log(figure);
