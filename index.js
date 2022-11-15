@@ -10,22 +10,24 @@ const prompt = require("prompt-sync")();
 console.log(`Welcome to Hangman.
 Das Ziel ist es, das gegebene Wort zu erraten. Bei den Wörtern handelt es sich um Arten von Schlangen.`)
 
+let word = ""
+
 //Level
 let chooseLevel = prompt(`Welches Level von 1-3 willst du spielen?`);
 
 if (chooseLevel = `1`) {
-WORDS_TO_GUESS = WORDS_TO_GUESS_1[Math.floor(Math.random() * WORDS_TO_GUESS_1.length)];
+    word = WORDS_TO_GUESS_1[Math.floor(Math.random() * WORDS_TO_GUESS_1.length)];
 };
 
 if (chooseLevel = `2`) {
-    WORDS_TO_GUESS = WORDS_TO_GUESS_2[Math.floor(Math.random() * WORDS_TO_GUESS_2.length)];
+    word = WORDS_TO_GUESS_2[Math.floor(Math.random() * WORDS_TO_GUESS_2.length)];
     console.log(HANGMAN_PICS[1]);
 };
 
 if (chooseLevel = `3`) {
-    WORDS_TO_GUESS = WORDS_TO_GUESS_3[Math.floor(Math.random() * WORDS_TO_GUESS_3.length)]
+    word = WORDS_TO_GUESS_3[Math.floor(Math.random() * WORDS_TO_GUESS_3.length)]
     console.log(HANGMAN_PICS[3]);
-};
+}; 
 
 //Figure 
 for(let figure of constants.HANGMAN_PICS)
@@ -38,38 +40,39 @@ let negativeAttrs = [];
 
 function main(){
 
-    let hide_array = [""]
+let hide_array = [""]
 
-    if (WORDS_TO_GUESS.length == 3) {  
+    if (word.length == 3) {  
         hide_array = ["_", "_", "_"]
-    } else if (WORDS_TO_GUESS.length == 4) {
+    } else if (word.length == 4) {
         hide_array = ["_", "_", "_", "_"]
-    } else if (WORDS_TO_GUESS.length == 5) {
+    } else if (word.length == 5) {
         hide_array = ["_", "_", "_", "_", "_"]
-    } else if (WORDS_TO_GUESS.length == 6) {
+    } else if (word.length == 6) {
         hide_array = ["_", "_", "_", "_", "_", "_"]
-    } else if (WORDS_TO_GUESS.length == 7) {
+    } else if (word.length == 7) {
         hide_array = ["_", "_", "_", "_", "_", "_", "_"]
-    } else if (WORDS_TO_GUESS.length == 8) {
+    } else if (word.length == 8) {
         hide_array = ["_", "_", "_", "_", "_", "_", "_", "_"]
-    } else if (WORDS_TO_GUESS.length == 9) {
+    } else if (word.length == 9) {
         hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_"]
-    } else if (WORDS_TO_GUESS.length == 10) {
+    } else if (word.length == 10) {
         hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
-    } else if (WORDS_TO_GUESS.length == 11) {
+    } else if (word.length == 11) {
         hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
-    } else if (WORDS_TO_GUESS.length == 12) {
+    } else if (word.length == 12) {
         hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
-    } else if (WORDS_TO_GUESS.length == 13) {
+    } else if (word.length == 13) {
         hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
-    } else if (WORDS_TO_GUESS.length == 14) {
+    } else if (word.length == 14) {
         hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
-    } else if (WORDS_TO_GUESS.length == 15) {
+    } else if (word.length == 15) {
         hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
+    }
       
-let guesses = 8;
-      
-let answer_arr = (word.split(''));
+        let guesses = 8;
+        console.log(word, typeof word)
+        let answer_arr = (word.split(''));
       
 console.log(hide_array);
   
@@ -95,5 +98,3 @@ console.log(hide_array);
               }
   }
   main();
- 
-}
