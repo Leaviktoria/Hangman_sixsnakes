@@ -14,16 +14,16 @@ Das Ziel ist es, das gegebene Wort zu erraten. Bei den Wörtern handelt es sich 
 let chooseLevel = prompt(`Welches Level von 1-3 willst du spielen?`);
 
 if (chooseLevel = `1`) {
-WORDS_TO_GUESS = WORDS_TO_GUESS_1[Math.floor(Math.random() * randomWordLevel1.length)];
+WORDS_TO_GUESS = WORDS_TO_GUESS_1[Math.floor(Math.random() * WORDS_TO_GUESS_1.length)];
 };
 
 if (chooseLevel = `2`) {
-    WORDS_TO_GUESS = WORDS_TO_GUESS_2[Math.floor(Math.random() * randomWordLevel1.length)];
+    WORDS_TO_GUESS = WORDS_TO_GUESS_2[Math.floor(Math.random() * WORDS_TO_GUESS_2.length)];
     console.log(HANGMAN_PICS[1]);
 };
 
 if (chooseLevel = `3`) {
-    WORDS_TO_GUESS = WORDS_TO_GUESS_3[Math.floor(Math.random() * randomWordLevel1.length)]
+    WORDS_TO_GUESS = WORDS_TO_GUESS_3[Math.floor(Math.random() * WORDS_TO_GUESS_3.length)]
     console.log(HANGMAN_PICS[3]);
 };
 
