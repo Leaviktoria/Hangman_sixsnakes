@@ -52,9 +52,9 @@ const HANGMAN_PICS = [
 
 // TODO: Fill this list with values about a certain topic
 // you are passionate about: e.g. famous scientists, chess players, ...
-const WORDS_TO_GUESS_1 = [{attrs: `Boa`},{attrs: `Viper`},{attrs: `Otter`},{attrs: `Kobra`},{attrs: `Mamba`} ];
-const WORDS_TO_GUESS_2 = [{attrs: `Natter`},{attrs:`Python`},{attrs: `Aeskula`},{attrs: `Anakonda`}, {attrs: `Kornnatter`}];
-const WORDS_TO_GUESS_3 = [{attrs: `Warzenschlange`}, {attrs: `Blindschlange`},{attrs: `Kupferkopf`}, {attrs: `Seeschlange`}, {attrs: `Klapperschlange`}];
+const WORDS_TO_GUESS_1 = `Boa`, `Viper`, `Otter`,`Kobra`,`Mamba`;
+const WORDS_TO_GUESS_2 = `Natter`, `Python`, `Aeskula`,`Anakonda`, `Kornnatter`;
+const WORDS_TO_GUESS_3 = `Warzenschlange`, `Blindschlange`, `Kupferkopf`, `Seeschlange`,`Klapperschlange`;
 
 module.exports = {
   HANGMAN_PICS: HANGMAN_PICS,
