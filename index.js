@@ -2,7 +2,6 @@ const { WORDS_TO_GUESS_1, HANGMAN_PICS } = require('./constants');
 const { WORDS_TO_GUESS_2 } = require('./constants');
 const { WORDS_TO_GUESS_3 } = require('./constants');
 const constants = require('./constants');
-let alphaBet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 
 // In node.js: install a prompt library by running: `npm install prompt-sync` in the current folder
 const prompt = require("prompt-sync")();
@@ -15,16 +14,16 @@ Das Ziel ist es, das gegebene Wort zu erraten. Bei den Wörtern handelt es sich 
 let chooseLevel = prompt(`Welches Level von 1-3 willst du spielen?`);
 
 if (chooseLevel = `1`) {
-WORDS_TO_GUESS = WORDS_TO_GUESS_1;
+WORDS_TO_GUESS = WORDS_TO_GUESS_1[Math.floor(Math.random() * randomWordLevel1.length)];
 };
 
 if (chooseLevel = `2`) {
-    WORDS_TO_GUESS = WORDS_TO_GUESS_2;
+    WORDS_TO_GUESS = WORDS_TO_GUESS_2[Math.floor(Math.random() * randomWordLevel1.length)];
     console.log(HANGMAN_PICS[1]);
 };
 
 if (chooseLevel = `3`) {
-    WORDS_TO_GUESS = WORDS_TO_GUESS_3;
+    WORDS_TO_GUESS = WORDS_TO_GUESS_3[Math.floor(Math.random() * randomWordLevel1.length)]
     console.log(HANGMAN_PICS[3]);
 };
 
@@ -37,71 +36,64 @@ for(let figure of constants.HANGMAN_PICS)
 let positiveAttrs = [];
 let negativeAttrs = [];
 
-while (true) {          // main loop
-    let matches = [];
-    for (let obj of WORDS_TO_GUESS) {
-        let add = true;
+function main(){
 
-        // only match objects that have the positive attribute
-        for (let posAttr of positiveAttrs) {
-            if (!obj.attrs.includes(posAttr)) {
-                add = false;
-                break;
-            }
-        }
+    let hide_array = [""]
 
-        // only match objects that don't have the negative attribute
-        for (let negAttr of negativeAttrs) {
-            if (obj.attrs.includes(negAttr)) {
-                add = false;
-                break;
-            }
-        }
-
-        if (add) {
-            matches.push(obj);
-        }
-    }
-    //console.log(matches); 
-
-    // handle matches
-    if (matches.length === 0) {
-        console.log("I'm sorry, I've no idea what you're thinking about!")
-        break;
-    } else if (matches.length === 1) {
-        console.log(`I think you're thinking of a ${matches[0].name}`);
-        break;
-    }
-
-    // ask another question
-    // first: compile a list of available attributes
-    let availableAttrs = [];
-    for (let match of matches) {
-        for (let attr of match.attrs) {
-            if (!positiveAttrs.includes(attr) &&
-                !negativeAttrs.includes(attr) &&
-                !availableAttrs.includes(attr)) {
-                    availableAttrs.push(attr);
-                }
-        }
-    }
-    //console.log(`availableAttrs: ${availableAttrs}`);
-
-    if (availableAttrs.length === 0) {
-        console.error("This should never happen: no available attribute.")
-    }
-
-    // ask question
-    let attr = availableAttrs[0];   // TODO choose randomly
-    let answer = prompt(`Is what you're thinking of ${attr} [y/n/q-uit]: `)
-    if (answer === 'y') {
-        positiveAttrs.push(attr);
-    } else if (answer === 'n') {
-        negativeAttrs.push(attr);
-    } else  if (answer === 'q') {
-        process.exit(0);
-    }
+    if (WORDS_TO_GUESS.length == 3) {  
+        hide_array = ["_", "_", "_"]
+    } else if (WORDS_TO_GUESS.length == 4) {
+        hide_array = ["_", "_", "_", "_"]
+    } else if (WORDS_TO_GUESS.length == 5) {
+        hide_array = ["_", "_", "_", "_", "_"]
+    } else if (WORDS_TO_GUESS.length == 6) {
+        hide_array = ["_", "_", "_", "_", "_", "_"]
+    } else if (WORDS_TO_GUESS.length == 7) {
+        hide_array = ["_", "_", "_", "_", "_", "_", "_"]
+    } else if (WORDS_TO_GUESS.length == 8) {
+        hide_array = ["_", "_", "_", "_", "_", "_", "_", "_"]
+    } else if (WORDS_TO_GUESS.length == 9) {
+        hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_"]
+    } else if (WORDS_TO_GUESS.length == 10) {
+        hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
+    } else if (WORDS_TO_GUESS.length == 11) {
+        hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
+    } else if (WORDS_TO_GUESS.length == 12) {
+        hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
+    } else if (WORDS_TO_GUESS.length == 13) {
+        hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
+    } else if (WORDS_TO_GUESS.length == 14) {
+        hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
+    } else if (WORDS_TO_GUESS.length == 15) {
+        hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
+      
+let guesses = 8;
+      
+let answer_arr = (word.split(''));
+      
+console.log(hide_array);
+  
+      function arraysAreEqual(ary1,ary2){
+        return (ary1.join('') == ary2.join(''));
+      }
+      
+      function guess(letter){
+          let index = answer_arr.indexOf(letter);
+          if(answer_arr.indexOf(letter) > -1){
+              hide_array.splice(index, 1, letter);
+              hide_array.splice(answer_arr.lastIndexOf(letter), 1, letter);
+              return console.log(hide_array);
+          } else {
+              console.log("Wrong! You have " + guesses + " guesses remaining.");
+              guesses = guesses - 1;    
+          }    
+      }
+  
+      while(guesses > -1 && arraysAreEqual(hide_array, answer_arr) == false){
+          var input = prompt("Please enter a letter");
+          guess(input);
+              }
+  }
+  main();
+ 
 }
- if (answer == `q`) {
-     ProcessingInstruction.exit(0)
- } 
