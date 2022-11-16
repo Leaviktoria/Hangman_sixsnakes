@@ -30,6 +30,8 @@ if (chooseLevel === "1") {
 } else if (chooseLevel === `quit` || chooseLevel === `Quit`) {
     console.log("Goodbye");
     process.exit();
+} else {
+    console.log("Please select the level 1, 2 or 3!");
 }
     
 
@@ -40,8 +42,8 @@ if (chooseLevel === "1") {
  //};
 
  
-let positiveAttrs = [];
-let negativeAttrs = [];
+//let positiveAttrs = [];
+//let negativeAttrs = [];
 
 function main(){
 
@@ -74,12 +76,11 @@ let hide_array = [""]
     } else if (word.length == 15) {
         hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
     } 
+         
+    console.log(word, typeof word)
+    let answer_arr = (word.split(''));
       
-        
-        console.log(word, typeof word)
-        let answer_arr = (word.split(''));
-      
-console.log(hide_array);
+    console.log(hide_array);
   
       function arraysAreEqual(ary1,ary2){
         return (ary1.join('') == ary2.join(''));
@@ -92,13 +93,15 @@ console.log(hide_array);
               hide_array.splice(index, 1, letter);
               hide_array.splice(answer_arr.lastIndexOf(letter), 1, letter);
               return console.log(hide_array);
-          } 
+        } 
           else {
               console.log("Wrong! You have " + guesses + " guesses remaining.");
               guesses = guesses - 1;  
-          } if (letter === `quit` || guesses === `Quit`) {
+        } if (letter === `quit` || letter === `Quit`) {
             console.log("Goodbye");
             process.exit();
+        } if (letter.length > 1) {
+            console.log("Please enter one single letter!");
         }
       }
 
