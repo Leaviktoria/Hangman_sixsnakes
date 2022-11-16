@@ -14,7 +14,7 @@ let word = ""
 
 //Level
 
-let chooseLevel = prompt("Welches Level von 1-3 willst du spielen?");
+let chooseLevel = prompt("Welches Level von 1-3 willst du spielen? ");
 
 
 if (chooseLevel === "1") {
@@ -82,7 +82,8 @@ console.log(hide_array);
       function arraysAreEqual(ary1,ary2){
         return (ary1.join('') == ary2.join(''));
       }
-      
+      let letter = ["a", "b", "c"];
+
       function guess(letter){
           let index = answer_arr.indexOf(letter);
           if(answer_arr.indexOf(letter) > -1){
@@ -92,7 +93,7 @@ console.log(hide_array);
           } 
           else {
               console.log("Wrong! You have " + guesses + " guesses remaining.");
-              guesses = guesses - 1;    
+              guesses = guesses - 1;  
           } if (letter === `quit` || guesses === `Quit`) {
             console.log("Goodbye");
             process.exit();
@@ -102,8 +103,13 @@ console.log(hide_array);
      
   
       while(guesses > -1 && arraysAreEqual(hide_array, answer_arr) == false){
-          var input = prompt("Please enter a letter");
+          var input = prompt("Please enter a letter: ");
           guess(input);
+            if (guesses <= -1) {
+                console.log(`Sorry, you lost!`);
+                process.exit();
               }
+              }
+            
   }
   main();
