@@ -15,15 +15,17 @@ let word = ""
 //Level
 
 let chooseLevel = prompt("Welches Level von 1-3 willst du spielen? ");
-
+let guesses = 8;
 
 if (chooseLevel === "1") {
     word = WORDS_TO_GUESS_1[Math.floor(Math.random() * WORDS_TO_GUESS_1.length)];
 } else if (chooseLevel === "2") {
     word = WORDS_TO_GUESS_2[Math.floor(Math.random() * WORDS_TO_GUESS_2.length)];
+    guesses = 5;
    console.log(HANGMAN_PICS[1]);
 } else if (chooseLevel === "3") {
-    word = WORDS_TO_GUESS_3[Math.floor(Math.random() * WORDS_TO_GUESS_3.length)]
+    word = WORDS_TO_GUESS_3[Math.floor(Math.random() * WORDS_TO_GUESS_3.length)];
+    guesses = 3;
     console.log(HANGMAN_PICS[3]);
 } else if (chooseLevel === `quit` || chooseLevel === `Quit`) {
     console.log("Goodbye");
@@ -73,7 +75,7 @@ let hide_array = [""]
         hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
     } 
       
-        let guesses = 8;
+        
         console.log(word, typeof word)
         let answer_arr = (word.split(''));
       
