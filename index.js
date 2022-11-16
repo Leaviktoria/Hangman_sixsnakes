@@ -1,6 +1,7 @@
-const { WORDS_TO_GUESS_1, HANGMAN_PICS } = require('./constants');
+const { WORDS_TO_GUESS_1 } = require('./constants');
 const { WORDS_TO_GUESS_2 } = require('./constants');
 const { WORDS_TO_GUESS_3 } = require('./constants');
+const { HANGMAN_PICS } = require('./constants');
 const constants = require('./constants');
 
 // In node.js: install a prompt library by running: `npm install prompt-sync` in the current folder
@@ -20,16 +21,21 @@ if (chooseLevel === "1") {
     word = WORDS_TO_GUESS_1[Math.floor(Math.random() * WORDS_TO_GUESS_1.length)];
 } else if (chooseLevel === "2") {
     word = WORDS_TO_GUESS_2[Math.floor(Math.random() * WORDS_TO_GUESS_2.length)];
-    console.log(HANGMAN_PICS[1]);
+   console.log(HANGMAN_PICS[1]);
 } else if (chooseLevel === "3") {
     word = WORDS_TO_GUESS_3[Math.floor(Math.random() * WORDS_TO_GUESS_3.length)]
     console.log(HANGMAN_PICS[3]);
-} else if (chooseLevel === "q" && chooseLevel === "Q")
-    process.exit()
+} else if (chooseLevel === `quit` || chooseLevel === `Quit`) {
+    console.log("Goodbye");
+    process.exit();
+}
+    
+
+
 //Figure 
-for(let figure of constants.HANGMAN_PICS)
- {  console.log(figure);
- };
+//for(let figure of constants.HANGMAN_PICS)
+ //{  console.log(figure);
+ //};
 
  
 let positiveAttrs = [];
@@ -65,7 +71,7 @@ let hide_array = [""]
         hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
     } else if (word.length == 15) {
         hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"]
-    }
+    } 
       
         let guesses = 8;
         console.log(word, typeof word)
@@ -83,11 +89,17 @@ console.log(hide_array);
               hide_array.splice(index, 1, letter);
               hide_array.splice(answer_arr.lastIndexOf(letter), 1, letter);
               return console.log(hide_array);
-          } else {
+          } 
+          else {
               console.log("Wrong! You have " + guesses + " guesses remaining.");
               guesses = guesses - 1;    
-          }    
+          } if (letter === `quit` || guesses === `Quit`) {
+            console.log("Goodbye");
+            process.exit();
+        }
       }
+
+     
   
       while(guesses > -1 && arraysAreEqual(hide_array, answer_arr) == false){
           var input = prompt("Please enter a letter");
