@@ -204,8 +204,9 @@ function main() {
 
    
   }
+
   if (answer_arr.includes(hide_array) === false) {
-    console.log("Gratuliere! Du hast gewonnen!");
+    console.log("Gratuliere! Du hast gewonnen! Winner winner chicken dinner");
 }
 
  
