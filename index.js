@@ -11,6 +11,10 @@ console.log(
   "Willkommen bei Hangman. Das Ziel ist es, das gegebene Wort zu erraten. Bei den Wörtern handelt es sich um Arten von Schlangen."
 );
 
+let userName = prompt(`Wie heisst du?`);
+console.log(`Lets goo`);
+
+
 let word = "";
 
 //Level
@@ -29,7 +33,7 @@ if (chooseLevel === "1") {
   guesses = 3;
   console.log(HANGMAN_PICS[3]);
 } else if (chooseLevel === `quit` || chooseLevel === `Quit`) {
-  console.log("Goodbye");
+  console.log(`Tschüssii ${userName}`);
   process.exit();
 } else {
   console.log("Bitte wähle Level 1, 2 or 3 aus!");
@@ -117,7 +121,7 @@ function main() {
   }
 
   let wordLowerCase = word.toLowerCase();
-  console.log(wordLowerCase, typeof word);
+  //console.log(wordLowerCase, typeof word);
   let answer_arr = wordLowerCase.split("");
 
   console.log(hide_array);
@@ -179,7 +183,7 @@ function main() {
       }
     }
     if (letterLowerCase === `quit` || letterLowerCase === `Quit`) {
-      console.log("Goodbye");
+      console.log(`Tschüssiii ${userName}`);
       process.exit();
     }
 
@@ -198,7 +202,7 @@ function main() {
 
     guess(input);
     if (guesses === 0) {
-      console.log(`Sorry, du hast verloren!`);
+      console.log(`Sorry, du hast verloren, ${userName}!`);
       process.exit();
     }
 
@@ -206,7 +210,7 @@ function main() {
   }
 
   if (answer_arr.includes(hide_array) === false) {
-    console.log("Gratuliere! Du hast gewonnen! Winner winner chicken dinner");
+    console.log(`Gratuliere! Du hast gewonnen, ${userName}! Winner winner chicken dinner`);
 }
 
  
