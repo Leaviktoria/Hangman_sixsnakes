@@ -108,8 +108,40 @@ let hide_array = [""]
               Die falschen Buchstaben sind: ${negativeAttrs}
               
               `);
-             // HANGMAN_PICS. += 1; 
+              if (guesses === 6){
+                console.log(HANGMAN_PICS[0]);
+              }
 
+              if (guesses === 5){
+                console.log(HANGMAN_PICS[1]);
+              }
+
+              if (guesses === 4){
+
+                console.log(HANGMAN_PICS[2]);
+              }
+             
+              if (guesses === 3){
+
+                console.log(HANGMAN_PICS[3]);
+              }
+
+
+              if (guesses === 2){
+
+                console.log(HANGMAN_PICS[4]);
+              }  
+             
+             if (guesses === 1){
+                console.log(HANGMAN_PICS[5]);
+              }
+
+            if (guesses === 0){
+
+                console.log(HANGMAN_PICS[6]);
+            }
+
+              
              
         } if (letter === `quit` || letter === `Quit`) {
             console.log("Goodbye");
@@ -123,6 +155,7 @@ let hide_array = [""]
       }
       word
      
+   
   
       while(guesses > -1 && arraysAreEqual(hide_array, answer_arr) == false){
           var input = prompt("Bitte gib 1 Buchstaben an: ");
