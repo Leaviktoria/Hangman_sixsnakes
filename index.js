@@ -41,6 +41,8 @@ let negativeAttrs = [];
 function main() {
   let hide_array = [""];
 
+ 
+
   if (word.length == 3) {
     hide_array = ["_", "_", "_"];
   } else if (word.length == 4) {
@@ -127,7 +129,8 @@ function main() {
   function guess(letter) {
     let letterLowerCase = letter.toLowerCase();
     let index = answer_arr.indexOf(letterLowerCase);
-    
+     
+
 
     if (answer_arr.indexOf(letterLowerCase) > -1) {
         
@@ -137,13 +140,18 @@ function main() {
         1,
         letterLowerCase
       );
-
+     
       return console.log(hide_array);
+      
+     
+  
 
     } else {
       console.log(
         "Falsch! Du hast noch " + guesses + " Möglichkeiten, richtig zu raten."
       );
+
+      
 
       guesses = guesses - 1;
       negativeAttrs.push(letterLowerCase);
@@ -175,12 +183,13 @@ function main() {
       process.exit();
     }
 
+   
     if (letterLowerCase.length > 1) {
       console.log(`
             Bitte gib nur 1 Buchstaben an!`);
-    } /*WINNER: if (answer_arr === word) {
-            console.log("Gratuliere! Du hast gewonnen!");
-        }*/
+    } 
+    
+   
   }
   word;
 
@@ -188,10 +197,19 @@ function main() {
     var input = prompt("Bitte gib 1 Buchstaben an: ");
 
     guess(input);
-    if (guesses < 0) {
+    if (guesses === 0) {
       console.log(`Sorry, du hast verloren!`);
       process.exit();
     }
+
+   
   }
+  if (answer_arr.includes(hide_array) === false) {
+    console.log("Gratuliere! Du hast gewonnen!");
 }
+
+ 
+}
+
+
 main();
