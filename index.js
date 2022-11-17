@@ -8,7 +8,7 @@ const constants = require('./constants');
 const prompt = require("prompt-sync")();
 
 
-console.log("Welcome to Hangman. Das Ziel ist es, das gegebene Wort zu erraten. Bei den Wörtern handelt es sich um Arten von Schlangen.")
+console.log("Willkommen bei Hangman. Das Ziel ist es, das gegebene Wort zu erraten. Bei den Wörtern handelt es sich um Arten von Schlangen.")
 
 let word = ""
 
@@ -31,7 +31,7 @@ if (chooseLevel === "1") {
     console.log("Goodbye");
     process.exit();
 } else {
-    console.log("Please select the level 1, 2 or 3!");
+    console.log("Bitte wähle Level 1, 2 or 3 aus!");
 }
     
 
@@ -79,41 +79,48 @@ let hide_array = [""]
          
     console.log(word, typeof word)
     let answer_arr = (word.split(''));
-      
+    console.log(word.toLowerCase());  
     console.log(hide_array);
   
       function arraysAreEqual(ary1,ary2){
         return (ary1.join('') == ary2.join(''));
       }
-      let letter = ["a", "b", "c"];
+      
 
       function guess(letter){
           let index = answer_arr.indexOf(letter);
+          console.log(letter.toLowerCase());
           if(answer_arr.indexOf(letter) > -1){
               hide_array.splice(index, 1, letter);
               hide_array.splice(answer_arr.lastIndexOf(letter), 1, letter);
+              //letter.toLowerCase();
               return console.log(hide_array);
         } 
           else {
-              console.log("Wrong! You have " + guesses + " guesses remaining.");
-              guesses = guesses - 1;  
+              console.log("Falsch! Du hast noch " + guesses + " Möglichkeiten, richtig zu raten.")
+              //console.log(HANGMAN_PICS[+1]);
+              guesses = guesses - 1; 
+             // HANGMAN_PICS. += 1; 
         } if (letter === `quit` || letter === `Quit`) {
             console.log("Goodbye");
             process.exit();
         } if (letter.length > 1) {
-            console.log("Please enter one single letter!");
-        }
+            console.log("Bitte gib nur 1 Buchstaben an!");
+        } /*WINNER: if (answer_arr == word) {
+            console.log("Gratuliere! Du hast gewonnen!");
+        }*/
       }
 
      
   
       while(guesses > -1 && arraysAreEqual(hide_array, answer_arr) == false){
-          var input = prompt("Please enter a letter: ");
+          var input = prompt("Bitte gib 1 Buchstaben an: ");
+         
           guess(input);
             if (guesses <= -1) {
-                console.log(`Sorry, you lost!`);
+                console.log(`Sorry, du hast verloren!`);
                 process.exit();
-              }
+         } 
               }
             
   }
