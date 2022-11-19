@@ -127,10 +127,11 @@ function main() {
   //console.log(wordLowerCase, typeof word);
   let answer_arr = wordLowerCase.split("");
 
-  console.log(hide_array);
+  console.log(hide_array.join(" "));
 
   function arraysAreEqual(ary1, ary2) {
     return ary1.join("") == ary2.join("");
+
   }
 
   function guess(letter) {
@@ -149,7 +150,7 @@ function main() {
         letterLowerCase
       );
      
-      return console.log(hide_array);
+      return console.log(hide_array.join(" "));
       
      
   
