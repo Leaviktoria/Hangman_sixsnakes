@@ -8,7 +8,11 @@ const constants = require("./constants");
 const prompt = require("prompt-sync")();
 
 console.log(
-  "Willkommen bei Hangman. Das Ziel ist es, das gegebene Wort zu erraten. Bei den Wörtern handelt es sich um Arten von Schlangen."
+  `
+  ******************Willkommen bei Hangman. ******************
+
+  Das Ziel ist es, das gegebene Wort zu erraten. 
+  Bei den Wörtern handelt es sich um Arten von Schlangen.`
 );
 
 let userName = prompt(`
