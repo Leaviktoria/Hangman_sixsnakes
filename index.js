@@ -11,8 +11,11 @@ console.log(
   "Willkommen bei Hangman. Das Ziel ist es, das gegebene Wort zu erraten. Bei den Wörtern handelt es sich um Arten von Schlangen."
 );
 
-let userName = prompt(`Wie heisst du?`);
-console.log(`Lets goo`);
+let userName = prompt(`
+Wie heisst du? `);
+console.log(`
+Lets goo
+`);
 
 
 let word = "";
@@ -133,6 +136,7 @@ function main() {
   function guess(letter) {
     let letterLowerCase = letter.toLowerCase();
     let index = answer_arr.indexOf(letterLowerCase);
+    
      
 
 
@@ -151,13 +155,17 @@ function main() {
   
 
     } else {
-      console.log(
+      guesses = guesses - 1;
+      if (guesses > 0) {
+        
+        console.log(
+
         "Falsch! Du hast noch " + guesses + " Möglichkeiten, richtig zu raten."
-      );
+      );}
 
       
 
-      guesses = guesses - 1;
+      
       negativeAttrs.push(letterLowerCase);
       console.log(`
 
@@ -202,7 +210,7 @@ function main() {
 
     guess(input);
     if (guesses === 0) {
-      console.log(`Sorry, du hast verloren, ${userName}!`);
+      console.log(`Sorry, du hast verloren, ${userName}! Das gesuchte Word war ${wordLowerCase}`);
       process.exit();
     }
 
