@@ -1,26 +1,26 @@
-const { WORDS_TO_GUESS_1 } = require("./constants");
-
-const { WORDS_TO_GUESS_2 } = require("./constants");
-const { WORDS_TO_GUESS_3 } = require("./constants");
-const { HANGMAN_PICS } = require("./constants");
-const constants = require("./constants");
+const {
+  WORDS_TO_GUESS_1,
+  WORDS_TO_GUESS_2,
+  WORDS_TO_GUESS_3,
+  HANGMAN_PICS,
+} = require("./constants");
 
 const prompt = require("prompt-sync")();
+
+// TODO: multiple wrong guesses are not counted as one
 
 console.log(
   `
   ******************Willkommen bei Hangman. ******************
 
   Das Ziel ist es, das gegebene Wort zu erraten. 
-  Bei den Wörtern handelt es sich um Arten von Schlangen.`
+  Bei den Wörtern handelt es sich um Arten von Schlangen.\n`
 );
 
-console.log("\n");
 let userName = prompt(`Wie heisst du? `);
 console.log(`
 Lets goo
 `);
-
 
 let word = "";
 
@@ -39,162 +39,64 @@ if (chooseLevel === "1") {
   word = WORDS_TO_GUESS_3[Math.floor(Math.random() * WORDS_TO_GUESS_3.length)];
   guesses = 3;
   console.log(HANGMAN_PICS[3]);
-} else if (chooseLevel === `quit` || chooseLevel === `Quit`) {
+} else if (chooseLevel.toLowerCase() === "quit") {
   console.log(`Tschüssii ${userName}`);
   process.exit();
 } else {
   console.log("Bitte wähle Level 1, 2 or 3 aus!");
-
 }
 
-
-let negativeAttrs = [];
+let wrongLetters = [];
 
 function main() {
-  let hide_array = [""];
+  let hiddenWordArray = [""];
 
- 
-
-  if (word.length == 3) {
-    hide_array = ["_", "_", "_"];
-  } else if (word.length == 4) {
-    hide_array = ["_", "_", "_", "_"];
-  } else if (word.length == 5) {
-    hide_array = ["_", "_", "_", "_", "_"];
-  } else if (word.length == 6) {
-    hide_array = ["_", "_", "_", "_", "_", "_"];
-  } else if (word.length == 7) {
-    hide_array = ["_", "_", "_", "_", "_", "_", "_"];
-  } else if (word.length == 8) {
-    hide_arrayl = ["_", "_", "_", "_", "_", "_", "_", "_"];
-  } else if (word.length == 9) {
-    hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_"];
-  } else if (word.length == 10) {
-    hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_"];
-  } else if (word.length == 11) {
-    hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"];
-  } else if (word.length == 12) {
-    hide_array = ["_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_", "_"];
-  } else if (word.length == 13) {
-    hide_array = [
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-    ];
-  } else if (word.length == 14) {
-    hide_array = [
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-    ];
-  } else if (word.length == 15) {
-    hide_array = [
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-      "_",
-    ];
+  if (word.length >= 3 && word.length <= 15) {
+    hiddenWordArray = new Array(word.length).fill("_");
   }
 
   let wordLowerCase = word.toLowerCase();
   //console.log(wordLowerCase, typeof word);
-  let answer_arr = wordLowerCase.split("");
+  let answerArray = wordLowerCase.split("");
 
-  console.log(hide_array.join(" "));
+  console.log(hiddenWordArray.join(" "));
 
   function arraysAreEqual(ary1, ary2) {
     return ary1.join("") == ary2.join("");
-
   }
 
   function guess(letter) {
     let letterLowerCase = letter.toLowerCase();
-    let index = answer_arr.indexOf(letterLowerCase);
-    
-     
+    let index = answerArray.indexOf(letterLowerCase);
 
-
-    if (answer_arr.indexOf(letterLowerCase) > -1) {
-        
-      hide_array.splice(index, 1, letterLowerCase);
-      hide_array.splice(
-        answer_arr.lastIndexOf(letterLowerCase),
+    if (answerArray.indexOf(letterLowerCase) > -1) {
+      hiddenWordArray.splice(index, 1, letterLowerCase);
+      hiddenWordArray.splice(
+        answerArray.lastIndexOf(letterLowerCase),
         1,
         letterLowerCase
       );
-     
 
-      return console.log(hide_array.join(" "));
-      
-     
-  
-
+      return console.log(hiddenWordArray.join(" "));
     } else {
       guesses = guesses - 1;
       if (guesses > 0) {
-        
         console.log(
+          "Falsch! Du hast noch " +
+            guesses +
+            " Möglichkeiten, richtig zu raten."
+        );
+        //return console.log(hide_array.join(" "));
+      }
 
-        "Falsch! Du hast noch " + guesses + " Möglichkeiten, richtig zu raten."
-      );
-      //return console.log(hide_array.join(" "));
-    }
-
-      
-
-      
-      negativeAttrs.push(letterLowerCase);
+      wrongLetters.push(letterLowerCase);
       console.log(`
 
-              Die falschen Buchstaben sind: ${negativeAttrs}
+              Die falschen Buchstaben sind: ${wrongLetters}
               
               `);
-      if (guesses === 6) {
-        console.log(HANGMAN_PICS[0]);
-      } else if (guesses === 5) {
-        console.log(HANGMAN_PICS[1]);
-      } else if (guesses === 4) {
-        console.log(HANGMAN_PICS[2]);
-      } else if (guesses === 3) {
-        console.log(HANGMAN_PICS[3]);
-      } else if (guesses === 2) {
-        console.log(HANGMAN_PICS[4]);
-      } else if (guesses === 1) {
-        console.log(HANGMAN_PICS[5]);
-      } else if (guesses === 0) {
-        console.log(HANGMAN_PICS[6]);
+      if (guesses < 7) {
+        console.log(HANGMAN_PICS[6 - guesses]);
       } else if (letterLowerCase === `quit` || letterLowerCase === `Quit`) {
         console.log();
       }
@@ -204,34 +106,33 @@ function main() {
       process.exit();
     }
 
-   
     if (letterLowerCase.length > 1) {
       console.log(`
             Bitte gib nur 1 Buchstaben an!`);
-    } 
-    
-   
+    }
   }
   word;
 
-  while (guesses > -1 && arraysAreEqual(hide_array, answer_arr) == false) {
-    var input = prompt("Bitte gib 1 Buchstaben an: ");
+  while (guesses > -1 && !arraysAreEqual(hiddenWordArray, answerArray)) {
+    let input = prompt("Bitte gib 1 Buchstaben an: ");
 
     guess(input);
     if (guesses === 0) {
-      console.log(`Sorry, du hast verloren, ${userName}! Das gesuchte Word war ${wordLowerCase}`);
+      console.log(
+        `Sorry, du hast verloren, ${userName}! Das gesuchte Word war ${wordLowerCase}`
+      );
       process.exit();
     }
-
-   
   }
 
-  if (answer_arr.includes(hide_array) === false && chooseLevel === 1 || chooseLevel === 2 || chooseLevel ===3) {
-    console.log(`Gratuliere! Du hast gewonnen, ${userName}! Winner winner chicken dinner`);
+  if (
+    !answerArray.includes(hiddenWordArray) &&
+    [1, 2, 3].includes(chooseLevel)
+  ) {
+    console.log(
+      `Gratuliere! Du hast gewonnen, ${userName}! Winner winner chicken dinner`
+    );
+  }
 }
-
- 
-}
-
 
 main();
