@@ -15,8 +15,8 @@ console.log(
   Bei den Wörtern handelt es sich um Arten von Schlangen.`
 );
 
-let userName = prompt(`
-Wie heisst du? `);
+console.log("\n");
+let userName = prompt(`Wie heisst du? `);
 console.log(`
 Lets goo
 `);
@@ -44,6 +44,7 @@ if (chooseLevel === "1") {
   process.exit();
 } else {
   console.log("Bitte wähle Level 1, 2 or 3 aus!");
+
 }
 
 
@@ -154,6 +155,7 @@ function main() {
         letterLowerCase
       );
      
+
       return console.log(hide_array.join(" "));
       
      
@@ -166,7 +168,9 @@ function main() {
         console.log(
 
         "Falsch! Du hast noch " + guesses + " Möglichkeiten, richtig zu raten."
-      );}
+      );
+      //return console.log(hide_array.join(" "));
+    }
 
       
 
@@ -222,7 +226,7 @@ function main() {
    
   }
 
-  if (answer_arr.includes(hide_array) === false) {
+  if (answer_arr.includes(hide_array) === false && chooseLevel === 1 || chooseLevel === 2 || chooseLevel ===3) {
     console.log(`Gratuliere! Du hast gewonnen, ${userName}! Winner winner chicken dinner`);
 }
 
